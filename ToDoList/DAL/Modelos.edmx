@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ToDoListModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CUENTAS_TB">
+          <Key>
+            <PropertyRef Name="Cuenta_ID" />
+          </Key>
+          <Property Name="Cuenta_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cuenta_Usuario_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="NOTAS_TB">
+          <Key>
+            <PropertyRef Name="Nota_ID" />
+          </Key>
+          <Property Name="Nota_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Notas_Cuenta_ID" Type="int" />
+          <Property Name="Titulo" Type="varchar" MaxLength="100" />
+          <Property Name="Cuerpo" Type="text" />
+          <Property Name="Fecha_Creacion" Type="datetime" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="TIPOS_USUARIO_TB">
+          <Key>
+            <PropertyRef Name="Tipos_Usuario_ID" />
+          </Key>
+          <Property Name="Tipos_Usuario_ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="USUARIOS_TB">
+          <Key>
+            <PropertyRef Name="Usuario_ID" />
+          </Key>
+          <Property Name="Usuario_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="40" />
+          <Property Name="Pass" Type="varchar" MaxLength="45" />
+          <Property Name="Tipo_Usuario" Type="tinyint" />
+        </EntityType>
+        <Association Name="Cuenta_Usuario_FK">
+          <End Role="USUARIOS_TB" Type="Self.USUARIOS_TB" Multiplicity="0..1" />
+          <End Role="CUENTAS_TB" Type="Self.CUENTAS_TB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS_TB">
+              <PropertyRef Name="Usuario_ID" />
+            </Principal>
+            <Dependent Role="CUENTAS_TB">
+              <PropertyRef Name="Cuenta_Usuario_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Notas_Usuario_FK">
+          <End Role="CUENTAS_TB" Type="Self.CUENTAS_TB" Multiplicity="0..1" />
+          <End Role="NOTAS_TB" Type="Self.NOTAS_TB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUENTAS_TB">
+              <PropertyRef Name="Cuenta_ID" />
+            </Principal>
+            <Dependent Role="NOTAS_TB">
+              <PropertyRef Name="Notas_Cuenta_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Usuarios_Usuario_Tipo_Usuario_FK">
+          <End Role="TIPOS_USUARIO_TB" Type="Self.TIPOS_USUARIO_TB" Multiplicity="0..1" />
+          <End Role="USUARIOS_TB" Type="Self.USUARIOS_TB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_USUARIO_TB">
+              <PropertyRef Name="Tipos_Usuario_ID" />
+            </Principal>
+            <Dependent Role="USUARIOS_TB">
+              <PropertyRef Name="Tipo_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ToDoListModelStoreContainer">
+          <EntitySet Name="CUENTAS_TB" EntityType="Self.CUENTAS_TB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NOTAS_TB" EntityType="Self.NOTAS_TB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPOS_USUARIO_TB" EntityType="Self.TIPOS_USUARIO_TB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIOS_TB" EntityType="Self.USUARIOS_TB" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Cuenta_Usuario_FK" Association="Self.Cuenta_Usuario_FK">
+            <End Role="USUARIOS_TB" EntitySet="USUARIOS_TB" />
+            <End Role="CUENTAS_TB" EntitySet="CUENTAS_TB" />
+          </AssociationSet>
+          <AssociationSet Name="Notas_Usuario_FK" Association="Self.Notas_Usuario_FK">
+            <End Role="CUENTAS_TB" EntitySet="CUENTAS_TB" />
+            <End Role="NOTAS_TB" EntitySet="NOTAS_TB" />
+          </AssociationSet>
+          <AssociationSet Name="Usuarios_Usuario_Tipo_Usuario_FK" Association="Self.Usuarios_Usuario_Tipo_Usuario_FK">
+            <End Role="TIPOS_USUARIO_TB" EntitySet="TIPOS_USUARIO_TB" />
+            <End Role="USUARIOS_TB" EntitySet="USUARIOS_TB" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ToDoListModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CUENTAS_TB">
+          <Key>
+            <PropertyRef Name="Cuenta_ID" />
+          </Key>
+          <Property Name="Cuenta_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cuenta_Usuario_ID" Type="Int32" />
+          <NavigationProperty Name="USUARIOS_TB" Relationship="Self.Cuenta_Usuario_FK" FromRole="CUENTAS_TB" ToRole="USUARIOS_TB" />
+          <NavigationProperty Name="NOTAS_TB" Relationship="Self.Notas_Usuario_FK" FromRole="CUENTAS_TB" ToRole="NOTAS_TB" />
+        </EntityType>
+        <EntityType Name="NOTAS_TB">
+          <Key>
+            <PropertyRef Name="Nota_ID" />
+          </Key>
+          <Property Name="Nota_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Notas_Cuenta_ID" Type="Int32" />
+          <Property Name="Titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cuerpo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Creacion" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CUENTAS_TB" Relationship="Self.Notas_Usuario_FK" FromRole="NOTAS_TB" ToRole="CUENTAS_TB" />
+        </EntityType>
+        <EntityType Name="TIPOS_USUARIO_TB">
+          <Key>
+            <PropertyRef Name="Tipos_Usuario_ID" />
+          </Key>
+          <Property Name="Tipos_Usuario_ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USUARIOS_TB" Relationship="Self.Usuarios_Usuario_Tipo_Usuario_FK" FromRole="TIPOS_USUARIO_TB" ToRole="USUARIOS_TB" />
+        </EntityType>
+        <EntityType Name="USUARIOS_TB">
+          <Key>
+            <PropertyRef Name="Usuario_ID" />
+          </Key>
+          <Property Name="Usuario_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Pass" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo_Usuario" Type="Byte" />
+          <NavigationProperty Name="CUENTAS_TB" Relationship="Self.Cuenta_Usuario_FK" FromRole="USUARIOS_TB" ToRole="CUENTAS_TB" />
+          <NavigationProperty Name="TIPOS_USUARIO_TB" Relationship="Self.Usuarios_Usuario_Tipo_Usuario_FK" FromRole="USUARIOS_TB" ToRole="TIPOS_USUARIO_TB" />
+        </EntityType>
+        <Association Name="Cuenta_Usuario_FK">
+          <End Role="USUARIOS_TB" Type="Self.USUARIOS_TB" Multiplicity="0..1" />
+          <End Role="CUENTAS_TB" Type="Self.CUENTAS_TB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS_TB">
+              <PropertyRef Name="Usuario_ID" />
+            </Principal>
+            <Dependent Role="CUENTAS_TB">
+              <PropertyRef Name="Cuenta_Usuario_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Notas_Usuario_FK">
+          <End Role="CUENTAS_TB" Type="Self.CUENTAS_TB" Multiplicity="0..1" />
+          <End Role="NOTAS_TB" Type="Self.NOTAS_TB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUENTAS_TB">
+              <PropertyRef Name="Cuenta_ID" />
+            </Principal>
+            <Dependent Role="NOTAS_TB">
+              <PropertyRef Name="Notas_Cuenta_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Usuarios_Usuario_Tipo_Usuario_FK">
+          <End Role="TIPOS_USUARIO_TB" Type="Self.TIPOS_USUARIO_TB" Multiplicity="0..1" />
+          <End Role="USUARIOS_TB" Type="Self.USUARIOS_TB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_USUARIO_TB">
+              <PropertyRef Name="Tipos_Usuario_ID" />
+            </Principal>
+            <Dependent Role="USUARIOS_TB">
+              <PropertyRef Name="Tipo_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ToDoListEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CUENTAS_TB" EntityType="Self.CUENTAS_TB" />
+          <EntitySet Name="NOTAS_TB" EntityType="Self.NOTAS_TB" />
+          <EntitySet Name="TIPOS_USUARIO_TB" EntityType="Self.TIPOS_USUARIO_TB" />
+          <EntitySet Name="USUARIOS_TB" EntityType="Self.USUARIOS_TB" />
+          <AssociationSet Name="Cuenta_Usuario_FK" Association="Self.Cuenta_Usuario_FK">
+            <End Role="USUARIOS_TB" EntitySet="USUARIOS_TB" />
+            <End Role="CUENTAS_TB" EntitySet="CUENTAS_TB" />
+          </AssociationSet>
+          <AssociationSet Name="Notas_Usuario_FK" Association="Self.Notas_Usuario_FK">
+            <End Role="CUENTAS_TB" EntitySet="CUENTAS_TB" />
+            <End Role="NOTAS_TB" EntitySet="NOTAS_TB" />
+          </AssociationSet>
+          <AssociationSet Name="Usuarios_Usuario_Tipo_Usuario_FK" Association="Self.Usuarios_Usuario_Tipo_Usuario_FK">
+            <End Role="TIPOS_USUARIO_TB" EntitySet="TIPOS_USUARIO_TB" />
+            <End Role="USUARIOS_TB" EntitySet="USUARIOS_TB" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ToDoListModelStoreContainer" CdmEntityContainer="ToDoListEntities">
+          <EntitySetMapping Name="CUENTAS_TB">
+            <EntityTypeMapping TypeName="ToDoListModel.CUENTAS_TB">
+              <MappingFragment StoreEntitySet="CUENTAS_TB">
+                <ScalarProperty Name="Cuenta_ID" ColumnName="Cuenta_ID" />
+                <ScalarProperty Name="Cuenta_Usuario_ID" ColumnName="Cuenta_Usuario_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOTAS_TB">
+            <EntityTypeMapping TypeName="ToDoListModel.NOTAS_TB">
+              <MappingFragment StoreEntitySet="NOTAS_TB">
+                <ScalarProperty Name="Nota_ID" ColumnName="Nota_ID" />
+                <ScalarProperty Name="Notas_Cuenta_ID" ColumnName="Notas_Cuenta_ID" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
+                <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOS_USUARIO_TB">
+            <EntityTypeMapping TypeName="ToDoListModel.TIPOS_USUARIO_TB">
+              <MappingFragment StoreEntitySet="TIPOS_USUARIO_TB">
+                <ScalarProperty Name="Tipos_Usuario_ID" ColumnName="Tipos_Usuario_ID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS_TB">
+            <EntityTypeMapping TypeName="ToDoListModel.USUARIOS_TB">
+              <MappingFragment StoreEntitySet="USUARIOS_TB">
+                <ScalarProperty Name="Usuario_ID" ColumnName="Usuario_ID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Tipo_Usuario" ColumnName="Tipo_Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
