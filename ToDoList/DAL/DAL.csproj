@@ -51,10 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conexion.cs" />
-    <Compile Include="CUENTAS_TB.cs">
-      <DependentUpon>Modelos.tt</DependentUpon>
-    </Compile>
+    <Compile Include="AD.cs" />
     <Compile Include="Modelos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,21 +67,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Modelos.edmx</DependentUpon>
     </Compile>
-    <Compile Include="NOTAS_TB.cs">
-      <DependentUpon>Modelos.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="TIPOS_USUARIO_TB.cs">
-      <DependentUpon>Modelos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="USUARIOS_TB.cs">
-      <DependentUpon>Modelos.tt</DependentUpon>
-    </Compile>
+    <Compile Include="SQLSentencias.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -100,12 +89,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BL\BL.csproj">
-      <Project>{fd49f72f-41aa-40bf-b3c3-f87ebe505ab8}</Project>
-      <Name>BL</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

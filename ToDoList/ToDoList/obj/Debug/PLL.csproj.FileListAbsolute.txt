@@ -167,3 +167,5 @@ C:\Users\Claudio\source\repos\DAL\ToDoList\bin\System.Xml.XPath.dll
 C:\Users\Claudio\source\repos\DAL\ToDoList\bin\System.Xml.XPath.XDocument.dll
 C:\Users\Claudio\source\repos\DAL\ToDoList\bin\BL.dll
 C:\Users\Claudio\source\repos\DAL\ToDoList\bin\BL.pdb
+C:\Users\Claudio\Documents\Universidad\Cuatrimestre 7\Programacion 4\Proyecto #1\ToDoList\ToDoList\obj\Debug\PLL.csprojAssemblyReference.cache
+C:\Users\Claudio\Documents\Universidad\Cuatrimestre 7\Programacion 4\Proyecto #1\ToDoList\ToDoList\obj\Debug\PLL.csproj.CoreCompileInputs.cache

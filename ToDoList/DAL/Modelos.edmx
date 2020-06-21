@@ -10,37 +10,39 @@
             <PropertyRef Name="Cuenta_ID" />
           </Key>
           <Property Name="Cuenta_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Cuenta_Usuario_ID" Type="int" />
+          <Property Name="Cuenta_Usuario_ID" Type="int" Nullable="false" />
+          <Property Name="Tipo_cuenta" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Numero_Tarjeta" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="NOTAS_TB">
           <Key>
             <PropertyRef Name="Nota_ID" />
           </Key>
           <Property Name="Nota_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Notas_Cuenta_ID" Type="int" />
+          <Property Name="Notas_Cuenta_ID" Type="int" Nullable="false" />
           <Property Name="Titulo" Type="varchar" MaxLength="100" />
           <Property Name="Cuerpo" Type="text" />
-          <Property Name="Fecha_Creacion" Type="datetime" />
-          <Property Name="Estado" Type="char" MaxLength="1" />
+          <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="TIPOS_USUARIO_TB">
           <Key>
             <PropertyRef Name="Tipos_Usuario_ID" />
           </Key>
           <Property Name="Tipos_Usuario_ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="20" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="USUARIOS_TB">
           <Key>
             <PropertyRef Name="Usuario_ID" />
           </Key>
           <Property Name="Usuario_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="40" />
-          <Property Name="Pass" Type="varchar" MaxLength="45" />
-          <Property Name="Tipo_Usuario" Type="tinyint" />
+          <Property Name="Email" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Pass" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Tipo_Usuario" Type="tinyint" Nullable="false" />
         </EntityType>
         <Association Name="Cuenta_Usuario_FK">
-          <End Role="USUARIOS_TB" Type="Self.USUARIOS_TB" Multiplicity="0..1" />
+          <End Role="USUARIOS_TB" Type="Self.USUARIOS_TB" Multiplicity="1" />
           <End Role="CUENTAS_TB" Type="Self.CUENTAS_TB" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIOS_TB">
@@ -52,7 +54,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Notas_Usuario_FK">
-          <End Role="CUENTAS_TB" Type="Self.CUENTAS_TB" Multiplicity="0..1" />
+          <End Role="CUENTAS_TB" Type="Self.CUENTAS_TB" Multiplicity="1" />
           <End Role="NOTAS_TB" Type="Self.NOTAS_TB" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CUENTAS_TB">
@@ -64,7 +66,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Usuarios_Usuario_Tipo_Usuario_FK">
-          <End Role="TIPOS_USUARIO_TB" Type="Self.TIPOS_USUARIO_TB" Multiplicity="0..1" />
+          <End Role="TIPOS_USUARIO_TB" Type="Self.TIPOS_USUARIO_TB" Multiplicity="1" />
           <End Role="USUARIOS_TB" Type="Self.USUARIOS_TB" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TIPOS_USUARIO_TB">
@@ -103,7 +105,9 @@
             <PropertyRef Name="Cuenta_ID" />
           </Key>
           <Property Name="Cuenta_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cuenta_Usuario_ID" Type="Int32" />
+          <Property Name="Cuenta_Usuario_ID" Type="Int32" Nullable="false" />
+          <Property Name="Tipo_cuenta" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Numero_Tarjeta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="USUARIOS_TB" Relationship="Self.Cuenta_Usuario_FK" FromRole="CUENTAS_TB" ToRole="USUARIOS_TB" />
           <NavigationProperty Name="NOTAS_TB" Relationship="Self.Notas_Usuario_FK" FromRole="CUENTAS_TB" ToRole="NOTAS_TB" />
         </EntityType>
@@ -112,11 +116,11 @@
             <PropertyRef Name="Nota_ID" />
           </Key>
           <Property Name="Nota_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Notas_Cuenta_ID" Type="Int32" />
+          <Property Name="Notas_Cuenta_ID" Type="Int32" Nullable="false" />
           <Property Name="Titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Cuerpo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Fecha_Creacion" Type="DateTime" Precision="3" />
-          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CUENTAS_TB" Relationship="Self.Notas_Usuario_FK" FromRole="NOTAS_TB" ToRole="CUENTAS_TB" />
         </EntityType>
         <EntityType Name="TIPOS_USUARIO_TB">
@@ -124,7 +128,7 @@
             <PropertyRef Name="Tipos_Usuario_ID" />
           </Key>
           <Property Name="Tipos_Usuario_ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="USUARIOS_TB" Relationship="Self.Usuarios_Usuario_Tipo_Usuario_FK" FromRole="TIPOS_USUARIO_TB" ToRole="USUARIOS_TB" />
         </EntityType>
         <EntityType Name="USUARIOS_TB">
@@ -132,14 +136,14 @@
             <PropertyRef Name="Usuario_ID" />
           </Key>
           <Property Name="Usuario_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="Pass" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="Tipo_Usuario" Type="Byte" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo_Usuario" Type="Byte" Nullable="false" />
           <NavigationProperty Name="CUENTAS_TB" Relationship="Self.Cuenta_Usuario_FK" FromRole="USUARIOS_TB" ToRole="CUENTAS_TB" />
           <NavigationProperty Name="TIPOS_USUARIO_TB" Relationship="Self.Usuarios_Usuario_Tipo_Usuario_FK" FromRole="USUARIOS_TB" ToRole="TIPOS_USUARIO_TB" />
         </EntityType>
         <Association Name="Cuenta_Usuario_FK">
-          <End Role="USUARIOS_TB" Type="Self.USUARIOS_TB" Multiplicity="0..1" />
+          <End Role="USUARIOS_TB" Type="Self.USUARIOS_TB" Multiplicity="1" />
           <End Role="CUENTAS_TB" Type="Self.CUENTAS_TB" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIOS_TB">
@@ -151,7 +155,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Notas_Usuario_FK">
-          <End Role="CUENTAS_TB" Type="Self.CUENTAS_TB" Multiplicity="0..1" />
+          <End Role="CUENTAS_TB" Type="Self.CUENTAS_TB" Multiplicity="1" />
           <End Role="NOTAS_TB" Type="Self.NOTAS_TB" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CUENTAS_TB">
@@ -163,7 +167,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Usuarios_Usuario_Tipo_Usuario_FK">
-          <End Role="TIPOS_USUARIO_TB" Type="Self.TIPOS_USUARIO_TB" Multiplicity="0..1" />
+          <End Role="TIPOS_USUARIO_TB" Type="Self.TIPOS_USUARIO_TB" Multiplicity="1" />
           <End Role="USUARIOS_TB" Type="Self.USUARIOS_TB" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TIPOS_USUARIO_TB">
@@ -203,6 +207,8 @@
               <MappingFragment StoreEntitySet="CUENTAS_TB">
                 <ScalarProperty Name="Cuenta_ID" ColumnName="Cuenta_ID" />
                 <ScalarProperty Name="Cuenta_Usuario_ID" ColumnName="Cuenta_Usuario_ID" />
+                <ScalarProperty Name="Tipo_cuenta" ColumnName="Tipo_cuenta" />
+                <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

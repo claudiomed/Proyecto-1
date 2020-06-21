@@ -21,7 +21,9 @@ namespace DAL
         }
     
         public int Cuenta_ID { get; set; }
-        public Nullable<int> Cuenta_Usuario_ID { get; set; }
+        public int Cuenta_Usuario_ID { get; set; }
+        public string Tipo_cuenta { get; set; }
+        public string Numero_Tarjeta { get; set; }
     
         public virtual USUARIOS_TB USUARIOS_TB { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

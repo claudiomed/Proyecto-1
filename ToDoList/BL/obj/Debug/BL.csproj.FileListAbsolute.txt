@@ -1,0 +1,2 @@
+C:\Users\Claudio\Documents\Universidad\Cuatrimestre 7\Programacion 4\Proyecto #1\ToDoList\BL\obj\Debug\BL.csprojAssemblyReference.cache
+C:\Users\Claudio\Documents\Universidad\Cuatrimestre 7\Programacion 4\Proyecto #1\ToDoList\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache

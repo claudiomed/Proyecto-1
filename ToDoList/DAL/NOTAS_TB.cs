@@ -15,10 +15,10 @@ namespace DAL
     public partial class NOTAS_TB
     {
         public int Nota_ID { get; set; }
-        public Nullable<int> Notas_Cuenta_ID { get; set; }
+        public int Notas_Cuenta_ID { get; set; }
         public string Titulo { get; set; }
         public string Cuerpo { get; set; }
-        public Nullable<System.DateTime> Fecha_Creacion { get; set; }
+        public System.DateTime Fecha_Creacion { get; set; }
         public string Estado { get; set; }
     
         public virtual CUENTAS_TB CUENTAS_TB { get; set; }

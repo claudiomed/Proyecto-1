@@ -23,7 +23,7 @@ namespace DAL
         public int Usuario_ID { get; set; }
         public string Email { get; set; }
         public string Pass { get; set; }
-        public Nullable<byte> Tipo_Usuario { get; set; }
+        public byte Tipo_Usuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUENTAS_TB> CUENTAS_TB { get; set; }
