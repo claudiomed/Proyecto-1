@@ -1,0 +1,86 @@
+USE [master]
+
+GO
+
+CREATE DATABASE [ToDoList]
+
+GO
+
+USE [ToDoList]
+
+GO
+
+CREATE TABLE [TIPOS_USUARIO_TB]
+(
+	[Tipos_Usuario_ID] TINYINT IDENTITY(1,1), 
+	[Descripcion] VARCHAR(20)
+
+	CONSTRAINT [Tipos_Usuario_PK] 
+	PRIMARY KEY CLUSTERED ([Tipos_Usuario_ID])
+	
+)
+
+GO 
+
+CREATE TABLE [USUARIOS_TB]
+(
+	[Usuario_ID] INT IDENTITY(1,1), 
+	[Email] VARCHAR(40), 
+	[Pass] VARCHAR(45), 
+	[Tipo_Usuario] TINYINT,
+	
+	CONSTRAINT [Usuario_ID_PK] 
+	PRIMARY KEY CLUSTERED ([Usuario_ID])
+)
+
+GO 
+
+ALTER TABLE [USUARIOS_TB]
+WITH NOCHECK 
+ADD CONSTRAINT [Usuarios_Usuario_Tipo_Usuario_FK]
+FOREIGN KEY ([Tipo_Usuario])
+REFERENCES [TIPOS_USUARIO_TB] ([Tipos_Usuario_ID])
+
+GO 
+
+CREATE TABLE [CUENTAS_TB]
+(
+	[Cuenta_ID] INT IDENTITY(1,1),
+	[Cuenta_Usuario_ID] INT
+	
+	CONSTRAINT [CUENTA_ID_PK] 
+	PRIMARY KEY CLUSTERED ([CUENTA_ID])
+)
+
+GO 
+
+ALTER TABLE [CUENTAS_TB]
+WITH NOCHECK 
+ADD CONSTRAINT [Cuenta_Usuario_FK]
+FOREIGN KEY ([Cuenta_Usuario_ID])
+REFERENCES [USUARIOS_TB] ([Usuario_ID])
+
+GO 
+
+CREATE TABLE [NOTAS_TB]
+(
+	[Nota_ID] INT IDENTITY(1,1),
+	[Notas_Cuenta_ID] INT,
+	[Titulo] VARCHAR(100), 
+	[Cuerpo] TEXT, 
+	[Fecha_Creacion] DATETIME, 
+	[Estado] CHAR
+	
+	CONSTRAINT [Notas_ID_PK] 
+	PRIMARY KEY CLUSTERED ([Nota_ID])
+)
+
+GO 
+
+ALTER TABLE [NOTAS_TB]
+WITH NOCHECK 
+ADD CONSTRAINT [Notas_Usuario_FK]
+FOREIGN KEY ([Notas_Cuenta_ID])
+REFERENCES [CUENTAS_TB] ([Cuenta_ID])
+
+
