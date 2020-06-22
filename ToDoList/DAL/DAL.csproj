@@ -52,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AD.cs" />
+    <Compile Include="CUENTAS_TB.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -67,6 +70,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Modelos.edmx</DependentUpon>
     </Compile>
+    <Compile Include="NOTAS_TB.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -74,6 +80,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="SQLSentencias.cs" />
+    <Compile Include="TIPOS_USUARIO_TB.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USUARIOS_TB.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
