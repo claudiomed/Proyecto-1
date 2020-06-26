@@ -4,10 +4,22 @@
     <EntitySetMapping Name="CUENTAS_TB">
       <EntityTypeMapping TypeName="ToDoListModel.CUENTAS_TB">
         <MappingFragment StoreEntitySet="CUENTAS_TB">
-          <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
-          <ScalarProperty Name="Tipo_cuenta" ColumnName="Tipo_cuenta" />
           <ScalarProperty Name="Cuenta_ID" ColumnName="Cuenta_ID" />
           <ScalarProperty Name="Cuenta_Usuario_ID" ColumnName="Cuenta_Usuario_ID" />
+          <ScalarProperty Name="Tipo_cuenta" ColumnName="Tipo_cuenta" />
+          <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NOTAS_TB">
+      <EntityTypeMapping TypeName="ToDoListModel.NOTAS_TB">
+        <MappingFragment StoreEntitySet="NOTAS_TB">
+          <ScalarProperty Name="Nota_ID" ColumnName="Nota_ID" />
+          <ScalarProperty Name="Notas_Cuenta_ID" ColumnName="Notas_Cuenta_ID" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -26,18 +38,6 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Pass" ColumnName="Pass" />
           <ScalarProperty Name="Tipo_Usuario" ColumnName="Tipo_Usuario" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="NOTAS_TB">
-      <EntityTypeMapping TypeName="ToDoListModel.NOTAS_TB">
-        <MappingFragment StoreEntitySet="NOTAS_TB">
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
-          <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
-          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-          <ScalarProperty Name="Notas_Cuenta_ID" ColumnName="Notas_Cuenta_ID" />
-          <ScalarProperty Name="Nota_ID" ColumnName="Nota_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
