@@ -206,6 +206,144 @@ namespace BL
             }
         }
 
+        /// <summary>
+        /// Retorna lista de tipos de usuario
+        /// </summary>
+        /// <returns></returns>
+        public static List<TIPOS_USUARIO_TB> consultarTiposUsuario()
+        {
+            SQLSentencias sentencia = new SQLSentencias();
+            sentencia.Peticion = @"EXEC Consultar_tablas_SP 'TIPOS_USUARIO_TB'";
+            AD objAcceso = new AD();
+            return objAcceso.Consultar_Tipos_Usuarios(sentencia);
+        }
+
+
+        /// <summary>
+        /// Retorna lista de usuarios
+        /// </summary>
+        /// <returns></returns>
+        public static List<USUARIOS_TB> consultarUsuarios()
+        {
+            SQLSentencias sentencia = new SQLSentencias();
+            sentencia.Peticion = @"EXEC Consultar_tablas_SP 'USUARIOS_TB'";
+            AD objAcceso = new AD();
+            return objAcceso.Consultar_Usuarios(sentencia);
+        }
+
+        /// <summary>
+        /// Retorna lista de cuentas
+        /// </summary>
+        /// <returns></returns>
+        public static List<CUENTAS_TB> consultarCuentas()
+        {
+            SQLSentencias sentencia = new SQLSentencias();
+            sentencia.Peticion = @"EXEC Consultar_tablas_SP 'CUENTAS_TB'";
+            AD objAcceso = new AD();
+            return objAcceso.Consultar_Cuentas(sentencia);
+        }
+
+        /// <summary>
+        /// Retorna lista de notas
+        /// </summary>
+        /// <returns></returns>
+        public static List<NOTAS_TB> consultarNotas()
+        {
+            SQLSentencias sentencia = new SQLSentencias();
+            sentencia.Peticion = @"EXEC Consultar_tablas_SP 'NOTAS_TB'";
+            AD objAcceso = new AD();
+            return objAcceso.Consultar_Notas(sentencia);
+        }
+
+
+        public static bool registrarse(string email, string password, string numeroTarjeta)
+        {
+            try
+            {
+                USUARIOS_TB nuevoUsuario = new USUARIOS_TB();
+                nuevoUsuario.Email = email;
+                nuevoUsuario.Pass = password;
+                if (numeroTarjeta == "")
+                {
+                    nuevoUsuario.Tipo_Usuario = 1;
+                }
+                else if(numeroTarjeta != "")
+                {
+                    nuevoUsuario.Tipo_Usuario = 2;
+                }
+                
+
+                var resultadoCreacionUsuario = CRUD_USUARIOS(nuevoUsuario, "C");
+
+                if (resultadoCreacionUsuario)
+                {
+                    CUENTAS_TB cuenta = crearCuenta(nuevoUsuario, numeroTarjeta);
+                    cuenta.Numero_Tarjeta = numeroTarjeta;
+                    var resultadoCreacionCuenta = CRUD_CUENTAS(cuenta, "C");
+
+                    if (resultadoCreacionCuenta)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Crea una cuenta nueva
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="numeroTarjeta"></param>
+        /// <returns></returns>
+        public static CUENTAS_TB crearCuenta(USUARIOS_TB usuario, string numeroTarjeta)
+        {
+            CUENTAS_TB cuenta = new CUENTAS_TB();
+            try
+            {
+                usuario = consultarUsuarios().Where(u => u.Email == usuario.Email).FirstOrDefault();
+                if (usuario != null)
+                {
+
+                    cuenta.Cuenta_Usuario_ID = usuario.Usuario_ID;
+                    if (usuario.Tipo_Usuario == 1)
+                    {
+                        cuenta.Tipo_cuenta = "S";
+                    }
+                    else if (usuario.Tipo_Usuario == 2)
+                    {
+                        cuenta.Tipo_cuenta = "P";
+                    }
+
+                    if (numeroTarjeta != "")
+                    {
+                        cuenta.Numero_Tarjeta = numeroTarjeta;
+                    }
+
+                }
+                else
+                {
+                    return cuenta = null;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return cuenta;
+        }
+
 
 
 

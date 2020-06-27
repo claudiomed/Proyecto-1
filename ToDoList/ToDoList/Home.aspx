@@ -23,7 +23,7 @@
             <h2>Title #2</h2>
             <p>Text Content #2</p>
             </a>
-        </li>
+        </li> 
         <li>
             <a href="#">
             <h2>Title #3</h2>
