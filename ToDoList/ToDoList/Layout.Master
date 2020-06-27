@@ -1,5 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ToDoList.Site" %>
-
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Layout.master.cs" Inherits="ToDoList.Layout" %>
 
 <!DOCTYPE html>
 
@@ -37,8 +36,6 @@
 		<link href="Content/plugins/general/select2/dist/css/select2.css" rel="stylesheet" type="text/css" />
 		<link href="Content/plugins/general/ion-rangeslider/css/ion.rangeSlider.css" rel="stylesheet" type="text/css" />
 		<link href="Content/plugins/general/nouislider/distribute/nouislider.css" rel="stylesheet" type="text/css" />
-		<link href="Content/plugins/general/owl.carousel/dist/Content/owl.carousel.css" rel="stylesheet" type="text/css" />
-		<link href="Content/plugins/general/owl.carousel/dist/Content/owl.theme.default.css" rel="stylesheet" type="text/css" />
 		<link href="Content/plugins/general/dropzone/dist/dropzone.css" rel="stylesheet" type="text/css" />
 		<link href="Content/plugins/general/quill/dist/quill.snow.css" rel="stylesheet" type="text/css" />
 		<link href="Content/plugins/general/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
@@ -91,10 +88,9 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                <!--ENd:: Chat-->
+                  <!--ENd:: Chat-->
 
 		<!-- begin::Global Config(global config for global JS sciprts) -->
 		<script>
@@ -255,8 +251,5 @@
 		<!--end::Page Scripts -->
             </asp:ContentPlaceHolder>
         </div>
-    </form>
 </body>
 </html>
-
-<!DOCTYPE html>
