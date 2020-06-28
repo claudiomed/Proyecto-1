@@ -26,12 +26,13 @@ namespace ToDoList
 
             try
             {
-                //Se busca si el usuario ya existe en la base de datos
+                //Se busca si el usuario y la cuenta ya existe en la base de datos
 
                 USUARIOS_TB usuarioExistente = BL.BL.consultarUsuarios().Where(u=>u.Email==correo).FirstOrDefault();
-                if (usuarioExistente!=null)
+                CUENTAS_TB cuentaExistente = BL.BL.consultarCuentas().Where(c => c.Cuenta_Usuario_ID == usuarioExistente.Usuario_ID).FirstOrDefault();
+                if (cuentaExistente!=null)
                 {
-                    mensaje = "Un usuario con el correo "+correo+" ya ha sido creado.";
+                    mensaje = "Una cuenta con el correo "+correo+" ya ha sido creada.";
                 }
 
                 var resultadoRegistro = BL.BL.registrarse(correo, password, numeroTarjeta);

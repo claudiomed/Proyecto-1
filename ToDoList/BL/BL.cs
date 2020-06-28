@@ -261,23 +261,41 @@ namespace BL
             try
             {
                 USUARIOS_TB nuevoUsuario = new USUARIOS_TB();
-                nuevoUsuario.Email = email;
-                nuevoUsuario.Pass = password;
-                if (numeroTarjeta == "")
+                USUARIOS_TB usuarioExistente = consultarUsuarios().Where(u => u.Email == email).FirstOrDefault();
+                if (usuarioExistente == null)
                 {
-                    nuevoUsuario.Tipo_Usuario = 1;
-                }
-                else if(numeroTarjeta != "")
-                {
-                    nuevoUsuario.Tipo_Usuario = 2;
-                }
-                
+                    nuevoUsuario.Email = email;
+                    nuevoUsuario.Pass = password;
+                    if (numeroTarjeta == "")
+                    {
+                        nuevoUsuario.Tipo_Usuario = 1;
+                    }
+                    else if (numeroTarjeta != "")
+                    {
+                        nuevoUsuario.Tipo_Usuario = 2;
+                    }
 
-                var resultadoCreacionUsuario = CRUD_USUARIOS(nuevoUsuario, "C");
 
-                if (resultadoCreacionUsuario)
+                    var resultadoCreacionUsuario = CRUD_USUARIOS(nuevoUsuario, "C");
+                    if (resultadoCreacionUsuario)
+                    {
+                        CUENTAS_TB cuenta = crearCuenta(nuevoUsuario, numeroTarjeta);
+                        cuenta.Numero_Tarjeta = numeroTarjeta;
+                        var resultadoCreacionCuenta = CRUD_CUENTAS(cuenta, "C");
+
+                        if (resultadoCreacionCuenta)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+                else
                 {
-                    CUENTAS_TB cuenta = crearCuenta(nuevoUsuario, numeroTarjeta);
+                    CUENTAS_TB cuenta = crearCuenta(usuarioExistente, numeroTarjeta);
                     cuenta.Numero_Tarjeta = numeroTarjeta;
                     var resultadoCreacionCuenta = CRUD_CUENTAS(cuenta, "C");
 
@@ -290,6 +308,10 @@ namespace BL
                         return false;
                     }
                 }
+                
+                
+
+                
             }
             catch (Exception e)
             {

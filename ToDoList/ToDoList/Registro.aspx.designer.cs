@@ -49,6 +49,15 @@ namespace ToDoList {
         protected global::System.Web.UI.WebControls.TextBox Password2;
         
         /// <summary>
+        /// Tarjeta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Tarjeta;
+        
+        /// <summary>
         /// enviar control.
         /// </summary>
         /// <remarks>

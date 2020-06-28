@@ -69,7 +69,7 @@
 					</div>
 
 					<div class="w-full text-center">
-						<a href="#" class="txt3">
+						<a href="Registro.aspx" class="txt3">
 							Crear Cuenta
 						</a>
 					</div>
