@@ -24,7 +24,7 @@
                         <a class="nav-link" data-toggle="modal" data-target="#FotosModal" style="background-color:yellow" href="#">Cambiar Fondo</a>
                     </li>
                     <li class="nav-item mr-4">
-                        <a class="nav-link" style="background-color:dodgerblue" href="Informacion.aspx">Información Premium</a>
+                        <a class="nav-link" style="background-color:dodgerblue; color:white" href="Informacion.aspx">Información Premium</a>
                     </li>
 
                 </ul>
@@ -37,7 +37,7 @@
                             <a class="nav-link" style="background-color:dodgerblue; color:white;"><%:Session["correoUsuario"] %></a>
                         </li>
                         <li class="nav-item mr-4">
-                            <asp:LinkButton runat="server" class="nav-link badge-danger" onclick="cerrarSesionBtn_Click">Cerrar Sesión</asp:LinkButton>
+                            <asp:LinkButton runat="server" style="color:white" class="nav-link badge-danger" onclick="cerrarSesionBtn_Click">Cerrar Sesión</asp:LinkButton>
                         </li>
                     </ul>
                     
@@ -58,7 +58,7 @@
                 <ul class="navbar-nav">
                   
                   <li class="nav-item mr-4">
-                    <a class="nav-link" style="background-color:lawngreen" onclick="agregarNota()">Agregar Nota</a>
+                    <a class="nav-link" style="background-color:lawngreen; color:white" onclick="agregarNota()">Agregar Nota</a>
                   </li>
             
                 </ul>
@@ -70,7 +70,7 @@
                             <a class="nav-link" style="background-color:dodgerblue; color:white;"><%:Session["correoUsuario"] %></a>
                         </li>
                         <li class="nav-item mr-4">
-                            <asp:LinkButton runat="server" class="nav-link badge-danger" onclick="cerrarSesionBtn_Click">Cerrar Sesión</asp:LinkButton>
+                            <asp:LinkButton runat="server" class="nav-link badge-danger" style="color:white" onclick="cerrarSesionBtn_Click">Cerrar Sesión</asp:LinkButton>
                         </li>
                     </ul>
 
@@ -88,18 +88,7 @@
                         <asp:TextBox runat="server" ID="Texto1" class="cuerpoStickyNote" placeholder="Escriba notas aquí"> </asp:TextBox>
                     </a>
                 </li>
-                <%--<li class="listas unorderedOrdered">
-                    <a class="letralinks" href="#">
-                    <h2 class="unorderedOrderedH2">Title #2</h2>
-                    <p class="unorderedOrderedP">Text Content #2</p>
-                    </a>
-                </li> 
-                <li class="listas unorderedOrdered">
-                    <a class="letralinks" href="#">
-                    <h2 class="unorderedOrderedH2">Title #3</h2>
-                    <p class="unorderedOrderedP">Text Content #3</p>
-                    </a>
-                </li>  --%>
+               
         
             </ul>
 
@@ -119,14 +108,14 @@
       <div class="modal-body">
         <div class="container">
             <div class="row">
-                <div class="col-sm col-md">
+                <div class="col-sm-6 col-md-6">
                     <a onclick="cambiarFondoPantalla('GrayImage')""><img id="GrayImage" src="Content/images/GrayImage.jpg" style="width:300px; height:200px"/></a>
                 </div>
-                <div class="col-sm col-md">
+                <div class="col-sm-6 col-md-6">
                     <a onclick="cambiarFondoPantalla('imgGato1')"><img id="imgGato1" src="Content/images/Cat1.jpg" style="width:300px; height:200px"/></a>
                 </div>
 
-                <div class="col-sm col-md">
+                <div class="col-sm-6 col-md-6">
                     <a onclick="cambiarFondoPantalla('imgPerro1')""><img id="imgPerro1" src="Content/images/Dog1.jpg" style="width:300px; height:200px"/></a>
                 </div>
             </div>
