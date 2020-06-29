@@ -260,11 +260,23 @@
     <Content Include="Content\css\style.bundle.rtl.css" />
     <Content Include="Content\css\style.bundle.rtl.min.css" />
     <Content Include="Content\daterangepicker.css" />
+    <Content Include="Content\ForbiddenError.css" />
     <Content Include="Content\hamburgers.css" />
     <Content Include="Content\hamburgers.min.css" />
     <Content Include="Content\images\bg-01.jpg" />
+    <Content Include="Content\images\Cat1.jpg" />
+    <Content Include="Content\images\Dog1.jpg" />
+    <Content Include="Content\images\GrayImage.jpg" />
     <Content Include="Content\images\icons\favicon.ico" />
+    <Content Include="Content\images\Stars1.jpg" />
     <Content Include="Content\images\StickyNotes.jpg" />
+    <Content Include="Content\ImgInformacion\bg-masthead.jpg" />
+    <Content Include="Content\ImgInformacion\bg-signup.jpg" />
+    <Content Include="Content\ImgInformacion\demo-image-01.jpg" />
+    <Content Include="Content\ImgInformacion\demo-image-02.jpg" />
+    <Content Include="Content\ImgInformacion\favicon.ico" />
+    <Content Include="Content\ImgInformacion\ipad.png" />
+    <Content Include="Content\Informacion.css" />
     <Content Include="Content\js\pages\builder.js" />
     <Content Include="Content\js\pages\builder.min.js" />
     <Content Include="Content\js\pages\components\base\dropdown.js" />
@@ -1363,6 +1375,7 @@
     <Content Include="Content\media\users\user3.jpg" />
     <Content Include="Content\media\users\user4.jpg" />
     <Content Include="Content\media\users\user5.jpg" />
+    <Content Include="Content\PageNotFound.css" />
     <Content Include="Content\perfect-scrollbar.css" />
     <Content Include="Content\plugins\custom\%40fullcalendar\core\main.css" />
     <Content Include="Content\plugins\custom\%40fullcalendar\core\main.js" />
@@ -1510,6 +1523,7 @@
     <Content Include="Content\plugins\general\owl.carousel\dist\assets\owl.theme.default.css" />
     <Content Include="Content\plugins\general\owl.carousel\dist\assets\owl.video.play.png" />
     <Content Include="Content\plugins\general\owl.carousel\dist\owl.carousel.js" />
+    <Content Include="Content\plugins\general\owl.carousel\dist\owl.carousel.min.js" />
     <Content Include="Content\plugins\general\perfect-scrollbar\css\perfect-scrollbar.css" />
     <Content Include="Content\plugins\general\perfect-scrollbar\dist\perfect-scrollbar.js" />
     <Content Include="Content\plugins\general\plugins\bootstrap-multiselectsplitter\bootstrap-multiselectsplitter.min.js" />
@@ -1547,6 +1561,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\StickyNotes.css" />
     <Content Include="Content\util.css" />
+    <Content Include="ErrorPage.aspx" />
+    <Content Include="ForbiddenError.aspx" />
+    <Content Include="Informacion.aspx" />
+    <Content Include="PageNotFound.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -1672,6 +1690,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
     <Content Include="Layout.Master" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1687,10 +1706,12 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\countdowntime.js" />
     <Content Include="Scripts\daterangepicker.js" />
+    <Content Include="Scripts\Informacion.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\Login.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\moment.js" />
@@ -1698,12 +1719,14 @@
     <Content Include="Scripts\perfect-scrollbar.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Registro.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\tooltip.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\Home.js" />
     <Content Include="Scripts\WebForms\Menu.js" />
     <Content Include="Scripts\WebForms\MenuStandards.js" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
@@ -1743,6 +1766,34 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ForbiddenError.aspx.cs">
+      <DependentUpon>ForbiddenError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForbiddenError.aspx.designer.cs">
+      <DependentUpon>ForbiddenError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informacion.aspx.cs">
+      <DependentUpon>Informacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informacion.aspx.designer.cs">
+      <DependentUpon>Informacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageNotFound.aspx.cs">
+      <DependentUpon>PageNotFound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageNotFound.aspx.designer.cs">
+      <DependentUpon>PageNotFound.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

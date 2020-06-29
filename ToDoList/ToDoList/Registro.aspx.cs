@@ -18,9 +18,9 @@ namespace ToDoList
 
         protected void enviar_Click(object sender, EventArgs e)
         {
-            var correo = Email.Text;
+            var correo = Email.Text.ToLower();
             var password = Password1.Text;
-            var numeroTarjeta = string.Empty;
+            var numeroTarjeta = Tarjeta.Text;
 
             var mensaje = string.Empty;
 
@@ -29,24 +29,31 @@ namespace ToDoList
                 //Se busca si el usuario y la cuenta ya existe en la base de datos
 
                 USUARIOS_TB usuarioExistente = BL.BL.consultarUsuarios().Where(u=>u.Email==correo).FirstOrDefault();
-                CUENTAS_TB cuentaExistente = BL.BL.consultarCuentas().Where(c => c.Cuenta_Usuario_ID == usuarioExistente.Usuario_ID).FirstOrDefault();
-                if (cuentaExistente!=null)
+                if (usuarioExistente!=null)
                 {
-                    mensaje = "Una cuenta con el correo "+correo+" ya ha sido creada.";
-                }
-
-                var resultadoRegistro = BL.BL.registrarse(correo, password, numeroTarjeta);
-                if (resultadoRegistro)
-                {
-                    mensaje = "Registro exitóso!";
+                    CUENTAS_TB cuentaExistente = BL.BL.consultarCuentas().Where(c => c.Cuenta_Usuario_ID == usuarioExistente.Usuario_ID).FirstOrDefault();
+                    if (cuentaExistente != null)
+                    {
+                        mensaje = "Una cuenta con el correo " + correo + " ya ha sido creada.";
+                    }
                 }
                 else
                 {
-                    mensaje = "La cuenta NO pudo ser creada!";
+                    var resultadoRegistro = BL.BL.registrarse(correo, password, numeroTarjeta);
+                    if (resultadoRegistro)
+                    {
+                        mensaje = "Registro exitóso!";
+                    }
+                    else
+                    {
+                        mensaje = "La cuenta NO pudo ser creada!";
+                    }
                 }
-                
-                //ClientScript.RegisterStartupScript(this.GetType(), null, "mostrarMensaje('" + mensaje + "', '" + palabra.ToLower() + "')", true);
-                ClientScript.RegisterStartupScript(this.GetType(), null, "resultadoCreacionCuenta("+mensaje+")", true);
+
+
+
+                //ClientScript.(this.GetType(), "Registro.js", "resultadoCreacionCuenta('" + mensaje + "')", true);
+                ClientScript.RegisterStartupScript(this.GetType(),null, "resultadoCreacionCuenta('" + mensaje + "')", true);
             }
             catch (Exception)
             {
