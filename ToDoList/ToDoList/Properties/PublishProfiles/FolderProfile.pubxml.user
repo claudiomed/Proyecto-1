@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\Claudio\Desktop\Certificado SSL</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\Claudio\Desktop\ToDoList</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="About.aspx">
@@ -25,19 +25,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/25/2018 10:42:28</publishTime>
     </File>
     <File Include="bin/BL.dll">
-      <publishTime>06/27/2020 18:28:53</publishTime>
+      <publishTime>06/28/2020 18:30:39</publishTime>
     </File>
     <File Include="bin/BL.pdb">
-      <publishTime>06/27/2020 18:28:53</publishTime>
+      <publishTime>06/28/2020 18:30:39</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>06/27/2020 00:32:57</publishTime>
+      <publishTime>06/28/2020 18:30:39</publishTime>
     </File>
     <File Include="bin/DAL.dll.config">
       <publishTime>06/21/2020 15:24:52</publishTime>
     </File>
     <File Include="bin/DAL.pdb">
-      <publishTime>06/27/2020 00:32:57</publishTime>
+      <publishTime>06/28/2020 18:30:39</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>06/07/2018 11:03:48</publishTime>
@@ -205,10 +205,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/11/2014 15:26:04</publishTime>
     </File>
     <File Include="bin/ToDoList.dll">
-      <publishTime>06/28/2020 13:50:46</publishTime>
+      <publishTime>06/29/2020 17:04:45</publishTime>
     </File>
     <File Include="bin/ToDoList.pdb">
-      <publishTime>06/28/2020 13:50:46</publishTime>
+      <publishTime>06/29/2020 17:04:45</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>01/23/2014 13:57:34</publishTime>
@@ -699,6 +699,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/daterangepicker.css">
       <publishTime>06/25/2020 22:49:07</publishTime>
     </File>
+    <File Include="Content/ForbiddenError.css">
+      <publishTime>06/29/2020 14:15:26</publishTime>
+    </File>
     <File Include="Content/hamburgers.css">
       <publishTime>06/25/2020 22:54:54</publishTime>
     </File>
@@ -708,11 +711,44 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/images/bg-01.jpg">
       <publishTime>06/25/2020 22:39:13</publishTime>
     </File>
+    <File Include="Content/images/Cat1.jpg">
+      <publishTime>06/29/2020 00:02:32</publishTime>
+    </File>
+    <File Include="Content/images/Dog1.jpg">
+      <publishTime>06/29/2020 00:02:32</publishTime>
+    </File>
+    <File Include="Content/images/GrayImage.jpg">
+      <publishTime>06/29/2020 15:02:50</publishTime>
+    </File>
     <File Include="Content/images/icons/favicon.ico">
       <publishTime>06/25/2020 22:39:13</publishTime>
     </File>
+    <File Include="Content/images/Stars1.jpg">
+      <publishTime>06/29/2020 00:55:45</publishTime>
+    </File>
     <File Include="Content/images/StickyNotes.jpg">
       <publishTime>06/26/2020 01:02:34</publishTime>
+    </File>
+    <File Include="Content/ImgInformacion/bg-masthead.jpg">
+      <publishTime>06/29/2020 14:34:40</publishTime>
+    </File>
+    <File Include="Content/ImgInformacion/bg-signup.jpg">
+      <publishTime>06/29/2020 14:34:40</publishTime>
+    </File>
+    <File Include="Content/ImgInformacion/demo-image-01.jpg">
+      <publishTime>06/29/2020 14:34:40</publishTime>
+    </File>
+    <File Include="Content/ImgInformacion/demo-image-02.jpg">
+      <publishTime>06/29/2020 14:34:40</publishTime>
+    </File>
+    <File Include="Content/ImgInformacion/favicon.ico">
+      <publishTime>06/29/2020 14:34:40</publishTime>
+    </File>
+    <File Include="Content/ImgInformacion/ipad.png">
+      <publishTime>06/29/2020 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Informacion.css">
+      <publishTime>06/29/2020 14:33:54</publishTime>
     </File>
     <File Include="Content/js/pages/builder.js">
       <publishTime>06/21/2020 23:09:37</publishTime>
@@ -4008,6 +4044,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/media/users/user5.jpg">
       <publishTime>06/21/2020 23:10:03</publishTime>
     </File>
+    <File Include="Content/PageNotFound.css">
+      <publishTime>06/29/2020 01:39:59</publishTime>
+    </File>
     <File Include="Content/perfect-scrollbar.css">
       <publishTime>06/25/2020 22:42:03</publishTime>
     </File>
@@ -4645,10 +4684,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2020 23:36:15</publishTime>
     </File>
     <File Include="Content/StickyNotes.css">
-      <publishTime>06/26/2020 02:05:13</publishTime>
+      <publishTime>06/29/2020 13:47:15</publishTime>
     </File>
     <File Include="Content/util.css">
       <publishTime>06/25/2020 22:37:28</publishTime>
+    </File>
+    <File Include="ErrorPage.aspx">
+      <publishTime>06/29/2020 02:41:20</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>06/20/2020 23:36:15</publishTime>
@@ -4908,23 +4950,32 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="fonts/poppins/Poppins-ThinItalic.ttf">
       <publishTime>06/25/2020 22:38:22</publishTime>
     </File>
+    <File Include="ForbiddenError.aspx">
+      <publishTime>06/29/2020 14:15:19</publishTime>
+    </File>
     <File Include="Global.asax">
       <publishTime>06/20/2020 23:36:15</publishTime>
     </File>
     <File Include="Home.aspx">
-      <publishTime>06/26/2020 20:06:02</publishTime>
+      <publishTime>06/29/2020 17:19:55</publishTime>
     </File>
     <File Include="Index.aspx">
       <publishTime>06/21/2020 23:40:34</publishTime>
     </File>
+    <File Include="Informacion.aspx">
+      <publishTime>06/29/2020 14:42:54</publishTime>
+    </File>
     <File Include="Layout.Master">
-      <publishTime>06/28/2020 00:03:36</publishTime>
+      <publishTime>06/28/2020 20:08:57</publishTime>
     </File>
     <File Include="Login.aspx">
-      <publishTime>06/28/2020 01:18:17</publishTime>
+      <publishTime>06/29/2020 14:57:49</publishTime>
+    </File>
+    <File Include="PageNotFound.aspx">
+      <publishTime>06/29/2020 13:56:03</publishTime>
     </File>
     <File Include="Registro.aspx">
-      <publishTime>06/28/2020 00:39:37</publishTime>
+      <publishTime>06/28/2020 19:40:44</publishTime>
     </File>
     <File Include="Scripts/animsition.js">
       <publishTime>06/25/2020 22:41:40</publishTime>
@@ -4943,6 +4994,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/daterangepicker.js">
       <publishTime>06/25/2020 22:49:00</publishTime>
+    </File>
+    <File Include="Scripts/Home.js">
+      <publishTime>06/29/2020 15:16:04</publishTime>
+    </File>
+    <File Include="Scripts/Informacion.js">
+      <publishTime>06/29/2020 14:33:03</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.js">
       <publishTime>06/20/2020 23:36:27</publishTime>
@@ -4963,7 +5020,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2020 23:36:27</publishTime>
     </File>
     <File Include="Scripts/Login.js">
-      <publishTime>06/27/2020 23:59:24</publishTime>
+      <publishTime>06/29/2020 15:01:36</publishTime>
     </File>
     <File Include="Scripts/main.js">
       <publishTime>06/25/2020 22:39:44</publishTime>
@@ -5071,7 +5128,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2020 23:36:42</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/28/2020 13:50:47</publishTime>
+      <publishTime>06/29/2020 17:48:58</publishTime>
     </File>
   </ItemGroup>
 </Project>

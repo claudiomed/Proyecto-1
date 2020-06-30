@@ -29,6 +29,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="Content/util.css"/>
 	<link rel="stylesheet" type="text/css" href="Content/main.css"/>
+    <link href="Content/plugins/general/sweetalert2/dist/sweetalert2.css" rel="stylesheet"/>
 <!--===============================================================================================-->
     <script src="Scripts/jquery-3.3.1.intellisense.js"></script>
     <script src="Scripts/jquery-3.3.1.js"></script>
@@ -39,57 +40,54 @@
     <link href="Content/plugins/general/toastr/build/toastr.css" rel="stylesheet"/>
 </asp:Content>
 
-<%--<body>--%>
-    <asp:Content ID="BodyContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <%-- <form id="form1" runat="server">--%>
-        
-            <div class="limiter">
-		        <div class="container-login100">
-			        <div class="wrap-login100">
-			    <form id="form1" runat="server" class="login100-form validate-form">
-					<span class="login100-form-title p-b-50">
-						To Do List!
-					</span>
+
+<asp:Content ID="BodyContent" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+        <script src="Content/plugins/general/sweetalert2/dist/sweetalert2.min.js"></script>
+    <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+		<form id="form1" runat="server" class="login100-form validate-form">
+			<span class="login100-form-title p-b-50">
+				To Do List!
+			</span>
 					
-					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-						<%--<input id="first-name" class="input100" type="text" name="username" placeholder="User name">--%>
-						<asp:TextBox id="email" runat="server" class="input100" type="email" name="email" placeholder="Correo Electrónico"></asp:TextBox>
-                        <span class="focus-input100"></span>
-					</div>
-					<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-						<%--<input class="input100" type="password" name="pass" placeholder="Contraseña"/>--%>
-                        <asp:TextBox  id="pass"  runat="server" class="input100" type="password" name="pass" data-validate="Type password" placeholder="Contraseña"> </asp:TextBox>
-						<span class="focus-input100"></span>
-					</div>
-					
-					<div class="container-login100-form-btn">
-						<%--<button runat="server" ID="Enviar"  class="login100-form-btn">
-							Ingresar
-						</button>--%>
-                        <asp:Button runat="server" ID="Enviar" onclick="Enviar_Click" class="login100-form-btn" Text="Ingresar"/>
-					</div>
-
-					<div class="w-full text-center p-t-27 p-b-239">
-						<span class="txt1">
-							Olvide
-						</span>
-
-						<a href="#" class="txt2">
-							Contraseña
-						</a>
-					</div>
-
-					<div class="w-full text-center">
-						<a href="Registro.aspx" class="txt3">
-							Crear Cuenta
-						</a>
-					</div>
-				</form>
-
-				<%--<div class="login100-more" style="background-image: url('Content/images/bg-01.jpg');"></div>--%>
-				<div class="login100-more" style="background-image: url('Content/images/StickyNotes.jpg');"></div>
+                       
+            <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+						       
+			<asp:TextBox id="email" runat="server" class="input100" type="email" name="email" placeholder="Correo Electrónico"></asp:TextBox>
+            <span class="focus-input100"></span>
 			</div>
-		</div>
+			<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
+						            
+                <asp:TextBox  id="pass"  runat="server" class="input100" type="password" name="pass" data-validate="Type password" placeholder="Contraseña"> </asp:TextBox>
+				<span class="focus-input100"></span>
+			</div>
+					
+			<div class="container-login100-form-btn">
+                <asp:Button runat="server" ID="Enviar" onclick="Enviar_Click" class="login100-form-btn" Text="Ingresar"/>
+			</div>
+
+			<div class="w-full text-center p-t-27 p-b-239">
+				<span class="txt1">
+					Olvide
+				</span>
+
+				<a href="#" class="txt2">
+					Contraseña
+				</a>
+			</div>
+
+			<div class="w-full text-center">
+				<a href="Registro.aspx" class="txt3">
+					Crear Cuenta
+				</a>
+			</div>
+
+		</form>
+		<div class="login100-more" style="background-image: url('Content/images/StickyNotes.jpg');"></div>
+	</div>
+</div>
 	
 	
 
@@ -118,6 +116,6 @@
 <!--===============================================================================================-->
             <script src="Scripts/main.js"></script>
         </div>
-   <%-- </form>--%>
+
 </asp:Content>
-<%--</html>--%>
+
